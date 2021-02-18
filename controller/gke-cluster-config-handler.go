@@ -147,7 +147,6 @@ func (h *Handler) OnGkeConfigRemoved(key string, config *gkev1.GKEClusterConfig)
 
 	logrus.Infof("deleting cluster [%s]", config.Name)
 
-	//TODO: delete cluster
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
