@@ -250,9 +250,6 @@ spec:
             failureMessage:
               nullable: true
               type: string
-            networkFieldsSource:
-              nullable: true
-              type: string
             phase:
               nullable: true
               type: string
@@ -262,9 +259,6 @@ spec:
                 type: string
               nullable: true
               type: array
-            virtualNetwork:
-              nullable: true
-              type: string
           type: object
       type: object
   version: v1

@@ -89,11 +89,8 @@ type PrivateClusterConfig struct {
 
 type GKEClusterConfigStatus struct {
 	Phase          string   `json:"phase"`
-	VirtualNetwork string   `json:"virtualNetwork"`
 	SecurityGroups []string `json:"securityGroups"`
-	// describes how the above network fields were provided. Valid values are provided and generated
-	NetworkFieldsSource string `json:"networkFieldsSource"`
-	FailureMessage      string `json:"failureMessage"`
+	FailureMessage string   `json:"failureMessage"`
 }
 
 type ClusterAddons struct {
