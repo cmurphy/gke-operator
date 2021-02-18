@@ -48,7 +48,6 @@ type GKEClusterConfigSpec struct {
 	SecretsEncryption              *bool                           `json:"secretsEncryption" norman:"noupdate"`
 	LoggingTypes                   []string                        `json:"loggingTypes"`
 	SecurityGroups                 []string                        `json:"securityGroups" norman:"noupdate"`
-	ServiceRole                    *string                         `json:"serviceRole" norman:"noupdate"`
 	EnableTpu                      bool                            `json:"enableTpu,omitempty"`
 	NodePools                      []NodePoolConfig                `json:"nodePools"`
 	NetworkConfig                  *NetworkConfig                  `json:"networkConfig,omitempty"`

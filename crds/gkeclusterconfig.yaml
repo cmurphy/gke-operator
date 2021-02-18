@@ -232,9 +232,6 @@ spec:
                 type: string
               nullable: true
               type: array
-            serviceRole:
-              nullable: true
-              type: string
             tags:
               additionalProperties:
                 nullable: true
