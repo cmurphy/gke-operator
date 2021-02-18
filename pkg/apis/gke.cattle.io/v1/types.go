@@ -47,7 +47,6 @@ type GKEClusterConfigSpec struct {
 	Tags                           map[string]string               `json:"tags"`
 	SecretsEncryption              *bool                           `json:"secretsEncryption" norman:"noupdate"`
 	LoggingTypes                   []string                        `json:"loggingTypes"`
-	Subnets                        []string                        `json:"subnets" norman:"noupdate"`
 	SecurityGroups                 []string                        `json:"securityGroups" norman:"noupdate"`
 	ServiceRole                    *string                         `json:"serviceRole" norman:"noupdate"`
 	EnableTpu                      bool                            `json:"enableTpu,omitempty"`
@@ -91,7 +90,6 @@ type PrivateClusterConfig struct {
 type GKEClusterConfigStatus struct {
 	Phase          string   `json:"phase"`
 	VirtualNetwork string   `json:"virtualNetwork"`
-	Subnets        []string `json:"subnets"`
 	SecurityGroups []string `json:"securityGroups"`
 	// describes how the above network fields were provided. Valid values are provided and generated
 	NetworkFieldsSource string `json:"networkFieldsSource"`

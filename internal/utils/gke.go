@@ -348,9 +348,6 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 			if config.Spec.Tags == nil {
 				return fmt.Errorf(cannotBeNilError, "tags", config.Name)
 			}
-			if config.Spec.Subnets == nil {
-				return fmt.Errorf(cannotBeNilError, "subnets", config.Name)
-			}
 			if config.Spec.SecurityGroups == nil {
 				return fmt.Errorf(cannotBeNilError, "securityGroups", config.Name)
 			}
