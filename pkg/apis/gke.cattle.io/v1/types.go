@@ -88,9 +88,8 @@ type PrivateClusterConfig struct {
 }
 
 type GKEClusterConfigStatus struct {
-	Phase          string   `json:"phase"`
-	SecurityGroups []string `json:"securityGroups"`
-	FailureMessage string   `json:"failureMessage"`
+	Phase          string `json:"phase"`
+	FailureMessage string `json:"failureMessage"`
 }
 
 type ClusterAddons struct {

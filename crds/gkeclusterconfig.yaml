@@ -253,12 +253,6 @@ spec:
             phase:
               nullable: true
               type: string
-            securityGroups:
-              items:
-                nullable: true
-                type: string
-              nullable: true
-              type: array
           type: object
       type: object
   version: v1
