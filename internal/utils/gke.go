@@ -293,14 +293,16 @@ func GetGKEClient(ctx context.Context, secretsCache wranglerv1.SecretCache, conf
 
 // ValidateCreateRequest checks a config for the ability to generate a create request
 func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
-	//TODO: check if these can even be nill/empty in a inported cluster.
 	if config.Spec.ProjectID == "" {
 		return fmt.Errorf("project ID is required")
-	} else if config.Spec.Zone == "" && config.Spec.Region == "" {
+	}
+	if config.Spec.Zone == "" && config.Spec.Region == "" {
 		return fmt.Errorf("zone or region is required")
-	} else if config.Spec.Zone != "" && config.Spec.Region != "" {
+	}
+	if config.Spec.Zone != "" && config.Spec.Region != "" {
 		return fmt.Errorf("only one of zone or region must be specified")
-	} else if config.Spec.ClusterName == "" {
+	}
+	if config.Spec.ClusterName == "" {
 		return fmt.Errorf("cluster name is required")
 	}
 
