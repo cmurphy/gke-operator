@@ -324,6 +324,9 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 	}
 
 	if !config.Spec.Imported {
+		if config.Spec.KubernetesVersion == nil {
+			return fmt.Errorf(cannotBeNilError, "kubernetesVersion", config.Name)
+		}
 		if config.Spec.IPAllocationPolicy == nil {
 			return fmt.Errorf(cannotBeNilError, "ipAllocationPolicy", config.Name)
 		}
@@ -349,9 +352,6 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 	/*
 		if !config.Spec.Imported {
 			cannotBeNilError := "field [%s] cannot be nil for non-import cluster [%s]"
-			if config.Spec.KubernetesVersion == nil {
-				return fmt.Errorf(cannotBeNilError, "kubernetesVersion", config.Name)
-			}
 			if config.Spec.SecretsEncryption == nil {
 				return fmt.Errorf(cannotBeNilError, "secretsEncryption", config.Name)
 			}
