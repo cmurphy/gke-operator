@@ -170,11 +170,6 @@ func (h *Handler) OnGkeConfigRemoved(key string, config *gkev1.GKEClusterConfig)
 }
 
 func (h *Handler) create(config *gkev1.GKEClusterConfig) (*gkev1.GKEClusterConfig, error) {
-	/*
-		if err := utils.ValidateCreateRequest(config); err != nil {
-			return config, err
-		}
-	*/
 	if config.Spec.Imported {
 		config = config.DeepCopy()
 		config.Status.Phase = gkeConfigImportingPhase
