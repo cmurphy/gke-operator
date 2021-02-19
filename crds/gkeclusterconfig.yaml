@@ -223,12 +223,6 @@ spec:
             region:
               nullable: true
               type: string
-            securityGroups:
-              items:
-                nullable: true
-                type: string
-              nullable: true
-              type: array
             zone:
               nullable: true
               type: string
