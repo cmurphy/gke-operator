@@ -115,6 +115,7 @@ func GenerateGkeClusterCreateRequest(config *gkev1.GKEClusterConfig) (*gkeapi.Cr
 	request.Cluster.InitialClusterVersion = *config.Spec.KubernetesVersion
 	request.Cluster.Description = config.Spec.Description
 	request.Cluster.EnableKubernetesAlpha = enableAlphaFeatures
+	request.Cluster.LoggingService = *config.Spec.LoggingService
 	request.Cluster.IpAllocationPolicy = &gkeapi.IPAllocationPolicy{
 		ClusterIpv4CidrBlock:       spec.IPAllocationPolicy.ClusterIpv4CidrBlock,
 		ClusterSecondaryRangeName:  spec.IPAllocationPolicy.ClusterSecondaryRangeName,
@@ -330,6 +331,9 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 		if config.Spec.IPAllocationPolicy == nil {
 			return fmt.Errorf(cannotBeNilError, "ipAllocationPolicy", config.Name)
 		}
+		if config.Spec.LoggingService == nil {
+			return fmt.Errorf(cannotBeNilError, "loggingService", config.Name)
+		}
 	}
 
 	//check if cluster with same name exists
@@ -349,14 +353,6 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 		}
 	}
 
-	/*
-		if !config.Spec.Imported {
-			cannotBeNilError := "field [%s] cannot be nil for non-import cluster [%s]"
-			if config.Spec.LoggingTypes == nil {
-				return fmt.Errorf(cannotBeNilError, "loggingTypes", config.Name)
-			}
-		}
-	*/
 	for _, np := range config.Spec.NodePools {
 		cannotBeNilError := "field [%s] cannot be nil for nodegroup [%s] in non-nil cluster [%s]"
 		if !config.Spec.Imported {
