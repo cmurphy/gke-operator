@@ -88,6 +88,11 @@ const (
 	ClusterStatusDegraded = "DEGRADED"
 )
 
+// Errors
+const (
+	cannotBeNilError = "field [%s] cannot be nil for non-import cluster [%s]"
+)
+
 // GenerateGkeClusterCreateRequest creates a request
 func GenerateGkeClusterCreateRequest(config *gkev1.GKEClusterConfig) (*gkeapi.CreateClusterRequest, error) {
 
@@ -111,9 +116,10 @@ func GenerateGkeClusterCreateRequest(config *gkev1.GKEClusterConfig) (*gkeapi.Cr
 	request.Cluster.Description = config.Spec.Description
 	request.Cluster.EnableKubernetesAlpha = enableAlphaFeatures
 	request.Cluster.IpAllocationPolicy = &gkeapi.IPAllocationPolicy{
-		NodeIpv4CidrBlock:          spec.IPAllocationPolicy.ClusterIpv4CidrBlock,
+		ClusterIpv4CidrBlock:       spec.IPAllocationPolicy.ClusterIpv4CidrBlock,
 		ClusterSecondaryRangeName:  spec.IPAllocationPolicy.ClusterSecondaryRangeName,
 		CreateSubnetwork:           spec.IPAllocationPolicy.CreateSubnetwork,
+		NodeIpv4CidrBlock:          spec.IPAllocationPolicy.NodeIpv4CidrBlock,
 		ServicesIpv4CidrBlock:      spec.IPAllocationPolicy.ServicesIpv4CidrBlock,
 		ServicesSecondaryRangeName: spec.IPAllocationPolicy.ServicesSecondaryRangeName,
 		SubnetworkName:             spec.IPAllocationPolicy.SubnetworkName,
@@ -317,8 +323,10 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 		}
 	}
 
-	if config.Spec.IPAllocationPolicy == nil {
-		return fmt.Errorf("IpAllocationPolicy can't be nil")
+	if !config.Spec.Imported {
+		if config.Spec.IPAllocationPolicy == nil {
+			return fmt.Errorf(cannotBeNilError, "ipAllocationPolicy", config.Name)
+		}
 	}
 
 	//check if cluster with same name exists
