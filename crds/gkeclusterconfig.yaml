@@ -229,12 +229,6 @@ spec:
                 type: string
               nullable: true
               type: array
-            tags:
-              additionalProperties:
-                nullable: true
-                type: string
-              nullable: true
-              type: object
             zone:
               nullable: true
               type: string

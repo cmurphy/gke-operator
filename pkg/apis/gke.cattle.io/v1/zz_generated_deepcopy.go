@@ -151,13 +151,6 @@ func (in *GKEClusterConfigSpec) DeepCopyInto(out *GKEClusterConfigSpec) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.Tags != nil {
-		in, out := &in.Tags, &out.Tags
-		*out = make(map[string]string, len(*in))
-		for key, val := range *in {
-			(*out)[key] = val
-		}
-	}
 	if in.LoggingTypes != nil {
 		in, out := &in.LoggingTypes, &out.LoggingTypes
 		*out = make([]string, len(*in))

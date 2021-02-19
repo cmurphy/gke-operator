@@ -352,9 +352,6 @@ func ValidateCreateRequest(config *gkev1.GKEClusterConfig) error {
 	/*
 		if !config.Spec.Imported {
 			cannotBeNilError := "field [%s] cannot be nil for non-import cluster [%s]"
-			if config.Spec.Tags == nil {
-				return fmt.Errorf(cannotBeNilError, "tags", config.Name)
-			}
 			if config.Spec.SecurityGroups == nil {
 				return fmt.Errorf(cannotBeNilError, "securityGroups", config.Name)
 			}
