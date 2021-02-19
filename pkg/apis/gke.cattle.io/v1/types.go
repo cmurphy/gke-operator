@@ -45,7 +45,6 @@ type GKEClusterConfigSpec struct {
 	ClusterName                    string                          `json:"clusterName"`
 	KubernetesVersion              *string                         `json:"kubernetesVersion"`
 	Tags                           map[string]string               `json:"tags"`
-	SecretsEncryption              *bool                           `json:"secretsEncryption" norman:"noupdate"`
 	LoggingTypes                   []string                        `json:"loggingTypes"`
 	SecurityGroups                 []string                        `json:"securityGroups" norman:"noupdate"`
 	EnableTpu                      bool                            `json:"enableTpu,omitempty"`

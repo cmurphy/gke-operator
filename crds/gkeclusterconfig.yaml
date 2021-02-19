@@ -223,9 +223,6 @@ spec:
             region:
               nullable: true
               type: string
-            secretsEncryption:
-              nullable: true
-              type: boolean
             securityGroups:
               items:
                 nullable: true

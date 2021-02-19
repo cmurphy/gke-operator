@@ -158,11 +158,6 @@ func (in *GKEClusterConfigSpec) DeepCopyInto(out *GKEClusterConfigSpec) {
 			(*out)[key] = val
 		}
 	}
-	if in.SecretsEncryption != nil {
-		in, out := &in.SecretsEncryption, &out.SecretsEncryption
-		*out = new(bool)
-		**out = **in
-	}
 	if in.LoggingTypes != nil {
 		in, out := &in.LoggingTypes, &out.LoggingTypes
 		*out = make([]string, len(*in))
