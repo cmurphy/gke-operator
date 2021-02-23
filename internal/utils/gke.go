@@ -196,8 +196,7 @@ func GenerateGkeClusterCreateRequest(config *gkev1.GKEClusterConfig) (*gkeapi.Cr
 
 	if config.Spec.NetworkPolicy != nil {
 		request.Cluster.NetworkPolicy = &gkeapi.NetworkPolicy{
-			Enabled:  *config.Spec.NetworkPolicy.Enabled,
-			Provider: *config.Spec.NetworkPolicy.Provider,
+			Enabled: *config.Spec.NetworkPolicy,
 		}
 	}
 

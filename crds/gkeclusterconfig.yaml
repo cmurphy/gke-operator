@@ -108,14 +108,7 @@ spec:
               type: object
             networkPolicy:
               nullable: true
-              properties:
-                enabled:
-                  nullable: true
-                  type: boolean
-                provider:
-                  nullable: true
-                  type: string
-              type: object
+              type: boolean
             nodePools:
               items:
                 properties:
