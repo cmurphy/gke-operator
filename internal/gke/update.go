@@ -51,7 +51,7 @@ func UpdateMasterKubernetesVersion(credential string, config *gkev1.GKEClusterCo
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -83,7 +83,7 @@ func UpdateMasterKubernetesVersion(credential string, config *gkev1.GKEClusterCo
 func UpdateClusterAddons(credential string, config *gkev1.GKEClusterConfig, upstreamSpec *gkev1.GKEClusterConfigSpec) (Status, error) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -170,7 +170,7 @@ func UpdateMasterAuthorizedNetworks(
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -229,7 +229,7 @@ func UpdateLoggingMonitoringService(
 	upstreamSpec *gkev1.GKEClusterConfigSpec) (Status, error) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -287,7 +287,7 @@ func UpdateNetworkPolicy(
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -326,7 +326,7 @@ func UpdateNodePoolKubernetesVersionOrImageType(
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -373,7 +373,7 @@ func UpdateNodePoolSize(
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}
@@ -403,7 +403,7 @@ func UpdateNodePoolAutoscaling(
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	client, err := utils.GetGKEClient(ctx, credential)
+	client, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return NotChanged, err
 	}

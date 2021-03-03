@@ -25,7 +25,7 @@ func Create(credential string, config *gkev1.GKEClusterConfig) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	svc, err := utils.GetGKEClient(ctx, credential)
+	svc, err := GetGKEClient(ctx, credential)
 	if err != nil {
 		return err
 	}
@@ -193,7 +193,7 @@ func validateCreateRequest(cred string, config *gkev1.GKEClusterConfig) error {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	svc, err := utils.GetGKEClient(ctx, cred)
+	svc, err := GetGKEClient(ctx, cred)
 	if err != nil {
 		return err
 	}

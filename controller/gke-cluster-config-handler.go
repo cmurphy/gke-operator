@@ -137,7 +137,7 @@ func (h *Handler) OnGkeConfigRemoved(key string, config *gkev1.GKEClusterConfig)
 	if err != nil {
 		return config, err
 	}
-	svc, err := utils.GetGKEClient(ctx, cred)
+	svc, err := gke.GetGKEClient(ctx, cred)
 	if err != nil {
 		return config, err
 	}
@@ -198,7 +198,7 @@ func (h *Handler) checkAndUpdate(config *gkev1.GKEClusterConfig) (*gkev1.GKEClus
 	if err != nil {
 		return config, err
 	}
-	svc, err := utils.GetGKEClient(ctx, cred)
+	svc, err := gke.GetGKEClient(ctx, cred)
 	if err != nil {
 		return config, err
 	}
@@ -362,7 +362,7 @@ func (h *Handler) waitForCreationComplete(config *gkev1.GKEClusterConfig) (*gkev
 	if err != nil {
 		return config, err
 	}
-	svc, err := utils.GetGKEClient(ctx, cred)
+	svc, err := gke.GetGKEClient(ctx, cred)
 	if err != nil {
 		return config, err
 	}
