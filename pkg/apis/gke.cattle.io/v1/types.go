@@ -89,7 +89,7 @@ type ClusterAddons struct {
 
 type NodePoolConfig struct {
 	Autoscaling       *NodePoolAutoscaling `json:"autoscaling,omitempty"`
-	Config            *NodeConfig          `json:"config,omitempty"`
+	Config            *GKENodeConfig       `json:"config,omitempty"`
 	InitialNodeCount  *int64               `json:"initialNodeCount,omitempty"`
 	MaxPodsConstraint *int64               `json:"maxPodsConstraint,omitempty"`
 	Name              *string              `json:"name,omitempty"`
@@ -103,7 +103,7 @@ type NodePoolAutoscaling struct {
 	MinNodeCount int64 `json:"minNodeCount,omitempty"`
 }
 
-type NodeConfig struct {
+type GKENodeConfig struct {
 	DiskSizeGb    int64             `json:"diskSizeGb,omitempty"`
 	DiskType      string            `json:"diskType,omitempty"`
 	ImageType     string            `json:"imageType,omitempty"`

@@ -677,7 +677,7 @@ func BuildUpstreamClusterState(cluster *gkeapi.Cluster) (*gkev1.GKEClusterConfig
 		}
 
 		if np.Config != nil {
-			newNP.Config = &gkev1.NodeConfig{
+			newNP.Config = &gkev1.GKENodeConfig{
 				DiskSizeGb:    np.Config.DiskSizeGb,
 				DiskType:      np.Config.DiskType,
 				ImageType:     np.Config.ImageType,
